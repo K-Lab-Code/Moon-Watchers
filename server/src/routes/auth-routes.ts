@@ -31,9 +31,21 @@ export const login = async (req: Request, res: Response) => {
   }
 };
 
+export const createUser = async (req: Request, res: Response) => {
+  const { username, password } = req.body;
+  try {
+    const newUser = await User.create({ username, password });
+    res.status(201).json(newUser);
+  } catch (error: any) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
 const router = Router();
 
 // POST /login - Login a user
 router.post('/login', login);
+// Post /create - creates a user
+router.post('/create', createUser);
 
 export default router;

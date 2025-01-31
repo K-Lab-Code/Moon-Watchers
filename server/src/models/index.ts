@@ -3,6 +3,7 @@ dotenv.config();
 
 import { Sequelize } from 'sequelize';
 import { UserFactory } from './user.js';
+import { EventFactory } from './event.js'
 
 const sequelize = process.env.DB_URL
   ? new Sequelize(process.env.DB_URL)
@@ -15,6 +16,10 @@ const sequelize = process.env.DB_URL
     });
 
 const User = UserFactory(sequelize);
+const Event = EventFactory(sequelize);
+
+User.hasMany(Event, { foreignKey: 'userId' });
+Event.belongsTo(User, { foreignKey: 'userId', as: 'assignedUser'});
 
 
-export { sequelize, User };
+export { sequelize, User, Event };
