@@ -1,0 +1,5 @@
+-- DROP DATABASE
+DROP DATABASE IF EXISTS moon_watchers_db;
+
+-- CREATE DATABASE
+CREATE DATABASE moon_watchers_db;
