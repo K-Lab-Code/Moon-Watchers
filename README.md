@@ -17,7 +17,7 @@
 
 ## Credits
 
-Project Designer: Kalab Smith
+Coproject Designer: Kalab Smith
 - [K-Lab-Code](https://github.com/K-Lab-Code)
 - [kalabsb@me.com](mailto:kalabsb@me.com)
 

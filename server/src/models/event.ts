@@ -42,7 +42,7 @@ export function EventFactory(sequelize: Sequelize): typeof Event {
         allowNull: false,
       },
       userId: {//need to come back and finsh this
-        type: DataTypes.NUMBER,
+        type: DataTypes.INTEGER,
         allowNull: false,
       },
     },
