@@ -1,9 +1,11 @@
 import { JwtPayload, jwtDecode } from 'jwt-decode';
+import type { UserData } from '../interfaces/UserData';
+
 class AuthService {
   getProfile() {
     const token = this.getToken();
     try {
-      return jwtDecode<JwtPayload>(token);
+      return jwtDecode<UserData>(token);
     } catch (error) {
       return null;
     }

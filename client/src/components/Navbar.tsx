@@ -16,12 +16,32 @@ const Navbar = () => {
     checkLogin();
   }, [loginCheck])
 
+
+  //TODO: make sure CSS styling interacts correctly with Navbar
   return (
     <div className='nav'>
-      <div className='nav-title'>
-        <Link to='/'>Krazy Kanban Board</Link>
-      </div>
-      <ul>
+      <h1>Moon Watchers</h1>
+        <ul className='nav-list'>
+          <li className='nav-item'>
+            <button type='button'>
+              <Link to='/'>Home</Link>
+            </button>
+          </li>
+          <li className='nav-item'>
+            <button type='button'>
+              <Link to='/search'>Search</Link>
+            </button>
+          </li>
+          <li className='nav-item'>
+            <button type='button'>
+              <Link to='/saved'>Saved</Link>
+            </button>
+          </li>
+          <li className='nav-item'>
+            <button type='button'>
+              <Link to='/learnMore'>Learn More</Link>
+            </button>
+          </li>
       {
         !loginCheck ? (
           <li className='nav-item'>
