@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 // GET /chart
 export const getMoonChart = async (_req: Request, res: Response) => {
-    //placeholder
+    //gets the date from three days from now
     const now = new Date();
     now.setDate(now.getDate() + 3);
     let list: any[] = [];
@@ -10,17 +10,19 @@ export const getMoonChart = async (_req: Request, res: Response) => {
     let day = String(now.getDate());
     let date = (year + '-' + month + '-' + day);
     try {
+        //This loop gets data from the moon api for the next 30 days and compiles them into one list.
         for (let i = 0; i < 5; i++) {
             const response = await fetch('https://api.viewbits.com/v1/moonphase?startdate=' + date);
             const data = await response.json();
             list = [...list, ...data];
             now.setDate(now.getDate() + 7);
             year = now.getFullYear();
-            month = String(now.getMonth() + 1)// Add leading zero if necessary
+            month = String(now.getMonth() + 1)
             day = String(now.getDate());
             date = (year + '-' + month + '-' + day);
         }
         const listMonth = list.slice(0, 30);
+        //This code goes through the list and figures out the range of days each of the eight phases of the moon are going to be and forms a list.
         let moonphase: string = '';
         const moonList:any[] = [];
         let moonInfo:{moonPhase: string, startDate: string, endDate: string} = {moonPhase: '', startDate: '', endDate: ''};
@@ -50,78 +52,14 @@ export const getMoonChart = async (_req: Request, res: Response) => {
             }
 
         }
-
+        //this returns a list of the moon phases and there start and finsh date to the client.
         return res.json(moonList);
     }
     catch (err) {
-        res.send("The ERROR: " + err);
+        //returns an error messoge if something went wrong.
+        res.status(400).send("The ERROR: " + err);
     }
-    return res.send("Nothing Sent");
+    return res.status(400).send("Nothing Sent");
 };
 
 
-/*
-        for (let i = 0; i < 1; i++) {
-            const response = await fetch('https://api.viewbits.com/v1/moonphase?startdate=' + date);
-            const data = await response.json();
-            if (list.length === 0) {
-                list.push(data[3]);
-            }
-            list.push(data[4], data[5], data[6]);
-            date = data[6].date;
-        }
-
-
-
-
-    function sendChart() {
-        console.log(list.length);
-        return res.json(list);
-    }
-
-        let count = 0;
-        const intervalId =  setInterval(async function fetchData() {
-            console.log(count);
-            const response = await fetch('https://api.viewbits.com/v1/moonphase?startdate=' + date);
-            console.log('fetch');
-            const data = await response.json();
-
-            if (list.length === 0) {
-                list.push(data[3]);
-            }
-            list.push(data[4], data[5], data[6]);
-            date = data[6].date;
-
-            count++;
-            if (count >= 5) { // or any condition to stop the interval
-                clearInterval(intervalId);
-                sendChart();
-            }
-        }, 250);
-
-        export const getMoonChart = async (_req: Request, res: Response) => {
-    //placeholder
-    const now = new Date();
-    const list: any[] = [];
-    const year = now.getFullYear();
-    const month = String(now.getMonth() + 1)// Add leading zero if necessary
-    const day = String(now.getDate());
-    let date = (year + '-' + month + '-' + day);
-    try {
-        for (let i = 0; i < 5; i++) {
-            const response = await fetch('https://api.viewbits.com/v1/moonphase?startdate=' + date);
-            const data = await response.json();
-            if (list.length === 0) {
-                list.push(data[3]);
-            }
-            list.push(data[4], data[5], data[6]);
-            date = data[6].date;
-        }
-    }
-    catch (err) {
-        res.send("The ERROR: " + err);
-    }
-    console.log(list.length);
-    return res.json(list);
-};
-            */
