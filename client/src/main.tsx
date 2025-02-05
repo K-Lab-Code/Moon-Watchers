@@ -3,7 +3,14 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
 
 import App from './App.tsx';
+
 import ErrorPage from './pages/ErrorPage.tsx';
+import Home from './pages/Home.tsx';
+import Login from './pages/Login.tsx';
+import Search from './pages/Search.tsx';
+import Saved from './pages/Saved.tsx';
+import LearnMore from './pages/LearnMore.tsx';
+
 
 const router = createBrowserRouter([
   {
@@ -13,19 +20,23 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Placeholder />
+        element: <Home />
       }, 
       {
-        path: '/here',
-        element: <Placeholder />
+        path: '/login',
+        element: <Login />
       },
       {
-        path: '/here2',
-        element: <Placeholder />
+        path: '/search',
+        element: <Search />
       },
       {
-        path: '/here3',
-        element: <Placeholder />
+        path: '/saved',
+        element: <Saved />
+      },
+      { 
+        path: '/learnMore',
+        element: <LearnMore />
       }
     ]
   }
