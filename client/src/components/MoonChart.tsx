@@ -10,7 +10,16 @@ const MoonPhaseChart = () => {
   useEffect(() => {
     const getMoonPhases = async () => {
       setLoading(true);
-      const result = await fetchMoonPhaseData(); // No startDate/endDate needed
+      const now = new Date();
+      const year = now.getFullYear();
+      const month = String(now.getMonth() + 1)// Add leading zero if necessary
+      const day = String(now.getDate());
+      const date = (year + '-' + month + '-' + day);
+      let result = JSON.parse(localStorage.getItem(date) as string);
+      if(!result){
+      result = await fetchMoonPhaseData(); // No startDate/endDate needed
+      localStorage.setItem(date, JSON.stringify(result));
+      }
       if (result) {
         setData(result);
       } else {
