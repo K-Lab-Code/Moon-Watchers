@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { fetchEvents, deleteEvent } from '../api/eventAPI';
-import { EventData } from '../interfaces/eventData';
+import { EventData } from '../interfaces/EventData';
 
 const SavedEvents = ({ token }: { token: string }) => {
     const [events, setEvents] = useState<EventData[] | null>(null);

@@ -52,19 +52,24 @@ const SearchForm = () => {
         <button type="submit" disabled={loading}>Search</button>
       </form>
       
+      <div>
+        <h2>Results:</h2>
+      </div>
+
       {loading && <p>Loading...</p>}
       {error && <p style={{ color: 'red' }}>{error}</p>}
       {result ? (
         <div style={{ display: 'flex', alignItems: 'start' }}>
-          <div>
-            <h3>Results:</h3>
-            <p><strong>Location:</strong> {result.location}</p>
-            <p><strong>Date:</strong> {result.date}</p>
-            <p><strong>Moon Phase:</strong> {result.moonPhase}</p>
-          </div>
+          <ul style={{ listStyleType: 'none', padding: '10px', marginLeft: '20px'}}>
+            <li><img height='175px' src={`../assests/${result.moonPhase}.webp`} alt={result.moonPhase} /></li>
+            <li><strong>Location:</strong> {result.location}</li>
+            <li><strong>Date:</strong> {result.date}</li>
+            <li><strong>Moon Phase:</strong> {result.moonPhase}</li>
+          </ul>
           {result.weather ? (
             <ul style={{ listStyleType: 'none', padding: '10px', marginLeft: '20px'}}>
-              <li><img src={`http://openweathermap.org/img/wn/${result.weather.weather[0].icon}.png`} alt={result.weather.weather[0].main} /> <strong>Weather:</strong> {result.weather.weather[0].main}</li>
+              <img height='175px' src={`http://openweathermap.org/img/wn/${result.weather.weather[0].icon}.png`} alt={result.weather.weather[0].main} />
+              <li><strong>Weather:</strong> {result.weather.weather[0].main}</li>
               <li><strong>Temperature:</strong> {Math.trunc(((result.weather.main.temp)-273.15)*(9/5)+32)}°F</li>
               <li><strong>Humidity:</strong> {result.weather.main.humidity}%</li>
               <li><strong>Wind Speed:</strong> {result.weather.wind.speed} m/s</li>

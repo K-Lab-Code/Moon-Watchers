@@ -1,21 +1,29 @@
-//add imports based on functionality needed
-import SavedEvents from "../components/SavedSearches";
+import  { useState, useEffect } from 'react';
+import SavedEvents from '../components/SavedSearches';
 
+const SavedEventsPage = () => {
+  const [token, setToken] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(true);
 
-const Saved = () => {
+  useEffect(() => {
+    const fetchToken = async () => {
+      const userToken = await new Promise<string>((resolve) =>
+        setTimeout(() => resolve('user-auth-token'), 500)
+      );
+      console.log('Token fetched:', userToken); // Debugging
+      setToken(userToken);
+      setLoading(false);
+    };
 
-  const token = localStorage.getItem('token') || '';
+    fetchToken();
+  }, []);
 
   return (
     <div>
-      <h1>Saved</h1>
-      {/* add the logged in User's previouse saved searches  */}
-      <SavedEvents token={token} />
+      <h1>My Saved Events</h1>
+      {loading ? <p>Loading token...</p> : token ? <SavedEvents token={token} /> : <p>No token found.</p>}
     </div>
-  )
-}
+  );
+};
 
-
-
-
-export default Saved;
+export default SavedEventsPage;
