@@ -3,6 +3,7 @@ export interface EventData {
   location: string;
   date: string;
   moonPhase: string;
+  moon_phase: string;
   weather?: {
     weather: { main: string; icon: string }[];
     main: { temp: number; humidity: number };
