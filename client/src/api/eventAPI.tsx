@@ -23,13 +23,14 @@ const fetchEvents = async (token: string): Promise<EventData[] | null> => {
   
 const saveEvent = async (eventData: EventData, token: string): Promise<string | null> => {
     try {
+      const data = {location: eventData.location, date: eventData.date, moonPhase: eventData.moonPhase};
       const response = await fetch('/api/event', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(eventData)
+        body: JSON.stringify(data)
       });
       
       if (!response.ok) {

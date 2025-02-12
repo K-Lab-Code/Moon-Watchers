@@ -4,6 +4,7 @@ import type { SearchRequest } from '../interfaces/SearchRequest';
 import type { SearchResult } from '../interfaces/SearchResult';
 import AuthService from '../utils/auth';
 import { saveEvent } from '../api/eventAPI';
+import { EventData } from '../interfaces/EventData';
 
 
 const SearchForm = () => {
@@ -52,7 +53,7 @@ const SearchForm = () => {
     }
 
     try {
-      const savedEvent = await saveEvent(result, token); // Call your API to save the event
+      const savedEvent = await saveEvent(result as EventData, token); // Call your API to save the event
       if (savedEvent) {
         setError('Search saved successfully!');
       } else {

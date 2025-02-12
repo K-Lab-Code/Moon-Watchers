@@ -15,7 +15,7 @@ This application solves the problem of wanting to know what moon phase will show
  To install locally, clone this repository into your local folder. After cloning, type ``` npm i ``` in the main project folder terminal. After that you need to rename the .env.EXAMPLE file into .env. Then, you create the postgress SQL database if it doesn't exist already. Then, you use the terminal to type ```npm run seed``` if you want to pre-add data to the database. Finally, type ```run npm start:dev``` to run.
 
 ## Usage
- To use this application, you can either log in to save searches or continue without signing in. You enter the date and location into the search fields to find out the Moon phase of that date and the weather of the location to determine the visibility of the moon. There is a page of links to more Moon information to learn.
+ To use this application, you can either log in to save searches or continue without signing in. You enter the date and location into the search fields to find out the Moon phase of that date and the weather of the location to determine the visibility of the moon. There is a page of links to more Moon information to learn. [Click Here](https://moon-watchers.onrender.com) to see deployed site. !Note the service hosting the postgres for this site has to be renewed every couple of months so theres a chance it will be down. If it is when go to use the site its saving and logging in features will not work.
 ## Credits
 
 Coproject Designer: Kalab Smith
