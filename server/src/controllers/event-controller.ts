@@ -24,6 +24,7 @@ export const getAllEvents = async (req: Request, res: Response) => {
       attributes: { exclude: ['userId', 'createdAt', 'updatedAt'] },
       where: { userId }
   });//attributes: { exclude: ['password'] }}
+    console.log(events);
     res.json(events);
   } catch (error: any) {
     res.status(500).json({ message: error.message });
