@@ -40,7 +40,7 @@ const MoonPhaseChart = () => {
       <ul>
         {data?.map((phase, index) => (
           <li key={index}>
-            {phase.moonphase}: {phase.startDate} - {phase.endDate}
+            {phase.moonPhase}: {phase.startDate} - {phase.endDate}
           </li>
         ))}
       </ul>
