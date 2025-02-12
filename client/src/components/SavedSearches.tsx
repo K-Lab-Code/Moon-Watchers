@@ -57,7 +57,7 @@ const SavedEvents = () => {
           {events.map(event => (
             <div key={event.id} style={{ display: 'flex', alignItems: 'start', marginBottom: '20px' }}>
               <ul style={{ listStyleType: 'none', padding: '10px', marginLeft: '20px'}}>
-                <li><img height='175px' src={`../assests/${event.moonPhase}.webp`} alt={event.moonPhase} /></li>
+                <li><img height='175px' src={`/${event.moonPhase}.webp`} alt={event.moonPhase} /></li>
                 <li><strong>Location:</strong> {event.location}</li>
                 <li><strong>Date:</strong> {event.date}</li>
                 <li><strong>Moon Phase:</strong> {event.moonPhase}</li>

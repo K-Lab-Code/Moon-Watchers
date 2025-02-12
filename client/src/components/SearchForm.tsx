@@ -88,7 +88,7 @@ const SearchForm = () => {
       {result ? (
         <div style={{ display: 'flex', alignItems: 'start' }}>
           <ul style={{ listStyleType: 'none', padding: '10px', marginLeft: '20px'}}>
-            <li><img height='175px' src={`../assests/${result.moonPhase}.webp`} alt={result.moonPhase} /></li>
+            <li><img height='175px' src={`/${result.moonPhase}.webp`} alt={result.moonPhase} /></li>
             <li><strong>Location:</strong> {result.location}</li>
             <li><strong>Date:</strong> {result.date}</li>
             <li><strong>Moon Phase:</strong> {result.moonPhase}</li>
