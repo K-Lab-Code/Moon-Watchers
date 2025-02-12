@@ -1,4 +1,4 @@
-import { EventData }  from "../interfaces/eventData";
+import { EventData }  from "../interfaces/EventData";
 
 const fetchEvents = async (token: string): Promise<EventData[] | null> => {
     try {
