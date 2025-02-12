@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import fetchSearchResults from '../api/searchAPI';
 import type { SearchRequest } from '../interfaces/SearchRequest';
 import type { SearchResult } from '../interfaces/SearchResult';
+import AuthService from '../utils/auth';
+import { saveEvent } from '../api/eventAPI';
 
 
 const SearchForm = () => {
@@ -34,6 +36,30 @@ const SearchForm = () => {
       setError('An unexpected error occurred.');
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleSaveSearch = async () => {
+    const token = AuthService.getToken();
+    if (!token) {
+      setError('You must be logged in to save a search.');
+      return;
+    }
+
+    if (!result) {
+      setError('No results to save.');
+      return;
+    }
+
+    try {
+      const savedEvent = await saveEvent(result, token); // Call your API to save the event
+      if (savedEvent) {
+        setError('Search saved successfully!');
+      } else {
+        setError('Failed to save the search.');
+      }
+    } catch (error) {
+      setError('An error occurred while saving the search.');
     }
   };
 
@@ -81,6 +107,9 @@ const SearchForm = () => {
       ) : (
         <p>No results found.</p>
       )}
+      
+      {/* Button to save search if logged in */}
+      {result && <button onClick={handleSaveSearch}>Save Search</button>}
     </div>
   );
 };
