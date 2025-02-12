@@ -21,7 +21,7 @@ const SavedEventsPage = () => {
   return (
     <div>
       <h1>My Saved Events</h1>
-      {loading ? <p>Loading token...</p> : token ? <SavedEvents token={token} /> : <p>No token found.</p>}
+      {loading ? <p>Loading token...</p> : token ? <SavedEvents /> : <p>No token found.</p>}
     </div>
   );
 };
