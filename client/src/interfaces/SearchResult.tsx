@@ -1,7 +1,7 @@
 export interface SearchResult {
   location: string;
   date: string;
-  moon_phase: string;
+  moonPhase: string;
   weather?: {
     weather: { main: string; icon: string }[];
     main: { temp: number; humidity: number };
